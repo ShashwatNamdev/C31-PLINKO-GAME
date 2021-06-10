@@ -15,19 +15,10 @@ function setup() {
   ground = new Ground(width/2,height,width,20);
 
   //create division objects
-  for (var k = 0; k <=80; k = k + 80) {
-    divisions.push(new Divisions(k, height-divisionHeight/2, 10, divisionHeight));
-  }
-
-  for (var k = 100; k <=80; k = k + 80) {
-    divisions.push(new Divisions(k, height-divisionHeight/2, 10, divisionHeight));
-  }
-
-  for (var k = 200; k <=80; k = k + 80) {
+  for (var k = 0; k <=800; k = k + 80) {
     divisions.push(new Divisions(k, height-divisionHeight/2, 10, divisionHeight));
   }
   
-
   //create 1st row of plinko objects
   for (var j = 75; j <=width; j=j+50) { 
     plinkos.push(new Plinko(j,75));
@@ -49,9 +40,7 @@ function setup() {
   }
 
   //create particle objects
-   if(frameCount%60===0){
-      particles.push(new Particles(random(width/2+10),10,10));
-   }
+   
     
 }
  
@@ -60,7 +49,11 @@ function setup() {
 function draw() {
   background("black");
   textSize(20)
- 
+  
+  if(frameCount%60===0){
+      particles.push(new Particles(random(300,500),10,17));
+   }
+  
   Engine.update(engine);
   ground.display();
   
